@@ -1,23 +1,3 @@
-# Flask Microsoft OAuth2
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![PyPI](https://img.shields.io/pypi/v/flask-ms-oauth2.svg)](https://pypi.org/project/flask-ms-oauth2)
-[![CircleCI](https://circleci.com/gh/shrivastava-v-ankit/flask-ms-oauth2.svg?style=svg)](https://circleci.com/gh/shrivastava-v-ankit/flask-ms-oauth2)
-
-
-flask-ms-oauth2 is a Flask implementation of authentication using Microsoft OAuth2 Service. This extension helps to implement authentication solutions based on Microsoft OAuth2 Service. It contains helpful functions and properties to handle oauth2 and token based authentication flows.
-
-</br>
-
-## Installation
-
-```bash
-pip install flask-ms-oauth2
-```
-
-### Usage
-
-```python
 from flask import Flask
 from flask import redirect
 from flask import url_for
@@ -38,9 +18,11 @@ app.config['TENANT_ID'] = "xxxxxxxxxxxxxxxxxxxxxxxxxx"
 app.config["ERROR_REDIRECT_URI"] = "page500"        # Optional
 app.config["STATE"] = "mysupersecrethash"   # Optional
 
-app.config['REDIRECT_URI'] = "https://yourdomainhere/msoauth2/callback"  # Specify this url in Callback URLs section of Appllication client settings within Microsoft OAuth2 Sevice. Post login application will redirect to this URL
+# Specify this url in Callback URLs section of Appllication client settings within Microsoft OAuth2 Sevice. Post login application will redirect to this URL
+app.config['REDIRECT_URI'] = "https://yourdomainhere/auth/callback"
 
-app.config['SIGNOUT_URI'] = "https://yourdomainhere/login" # Specify this url in Sign out URLs section of Appllication client settings. Post logout application will redirect to this URL
+# Specify this url in Sign out URLs section of Appllication client settings. Post logout application will redirect to this URL
+app.config['SIGNOUT_URI'] = "https://yourdomainhere/login"
 
 
 msoauth2 = MSOAuth2Manager(app)
@@ -83,7 +65,6 @@ def callback():
     return response
 
 
-
 # Use @logout_handler decorator on Microsoft OAuth2 logout route
 @app.route('/msoauth2/logout', methods=['GET'])
 @logout_handler
@@ -98,28 +79,3 @@ def page500():
 
 if __name__ == '__main__':
     app.run(debug=True)
-```
-
-
-
-### Development Setup
-
-Using pipenv
-```bash
-pipenv install --dev 
-```
-Using virtualenv
-```bash
-python3 -m venv venv
-source venv/bin/activate
-pip install .
-```
-
-### Contributing
-
-1. Fork repo- https://github.com/shrivastava-v-ankit/flask-ms-oauth2.git
-2. Create your feature branch - `git checkout -b feature/name`
-3. Add Python test (pytest) and coverage report for new/changed feature.
-4. Commit your changes - `git commit -am "Added name"`
-5. Push to the branch - `git push origin feature/name`
-6. Create a new pull request

@@ -1,0 +1,3 @@
+include flask_ms_oauth2/*.py
+include flask_ms_oauth2/.version
+include LICENSE
