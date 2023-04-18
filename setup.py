@@ -41,8 +41,8 @@ base = [
     "Flask-WTF==1.1.1",
     # Python HTTP for Humans.
     "requests==2.28.2",
-    # JOSE implementation in Python
-    "python-jose==3.3.0",
+    # # JOSE implementation in Python
+    # "python-jose==3.3.0",
     # The Microsoft Authentication Library (MSAL) for Python library by supporting authentication of users with Microsoft Azure Active Directory accounts (AAD) and Microsoft Accounts (MSA) using industry standard OAuth2 and OpenID Connect.
     "msal==1.20.0",
     # JSON Web Token implementation in Python
@@ -51,7 +51,7 @@ base = [
 
 dependencies = [
     "Flask==2.2.3",
-    "Jinja2==3.1.2",
+    "Jinja2==3.0.0",
     "MarkupSafe==2.1.2",
     "WTForms==3.0.1",
     "Werkzeug==2.2.3",
